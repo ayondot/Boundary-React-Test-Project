@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {eventLoginAsync} from "../../store/authentication/actions";
 
 class LoginPage extends React.Component {
     constructor(props){
@@ -13,7 +14,7 @@ class LoginPage extends React.Component {
         };
 
         this._handleChange = this._handleChange.bind(this);
-        this._handleChange = this._handleChange.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
 
     _handleChange(e) {
@@ -28,10 +29,7 @@ class LoginPage extends React.Component {
         const { username, password } = this.state;
         const { dispatch } = this.props;
 
-        /*
-        if (username && password) {
-            dispatch(userActions.login(username, password));
-        }*/
+        dispatch(eventLoginAsync(username, password));
     }
 
     render() {

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Route, Redirect} from "react-router";
 
-let isProtectedCheck = false;
-
-export const ProtectedRoute = ({ component: Component, ...rest}) => (
+export const ProtectedRoute = ({ component: Component, authStore: auth, ...rest}) => (
     <Route {...rest} render={props => (
-        isProtectedCheck
+        localStorage.getItem('isAuth')
             ? <Component {...props}/>
             : <Redirect to={{ pathname: '/login', state: {from: props.location} }}/>
     )} />
