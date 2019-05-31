@@ -1,9 +1,7 @@
-import { USER_LOGIN_REQUEST, USER_LOGGED_OUT, USER_LOGIN_SUCCESS,
-    USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE } from "./actions";
+import { USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAILURE } from "./actions";
 
 const initialState = {
-    loggedIn : false,
-    loggingIn: false,
+    updatingUser: false,
     user: {}
 };
 
@@ -56,4 +54,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export {reducer as authReducer};
+export {reducer as userReducer};

@@ -9,5 +9,6 @@ export default {
     },
 
     register(accountData) {
+        return authServiceClient.post('/register', accountData);
     }
 }

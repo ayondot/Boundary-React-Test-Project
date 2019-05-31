@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+const test_user = { id: 1, 
+    firstName: 'Ayorinde', 
+    lastName: 'Komolafe',
+    email_address: 'ayorindekomolafe@yahoo.com',
+    username: 'followfollow',
+    is_active: true 
+};
+
 const getClient = (baseUrl = null, proxy = null) => {
     const options = {
         baseURL: baseUrl,
@@ -42,11 +50,25 @@ class BoundaryJSClient {
             .then(response => Promise.resolve(response))
             .catch(error => Promise.reject(error));
     }
-
+    
     post(url, data = {}, conf = {}) {
-        return this.client.post(url, data, conf)
-            .then(response => Promise.resolve(response))
-            .catch(error => Promise.reject(error))
+        // return this.client.post(url, data, conf)
+        //     .then(response => Promise.resolve(response))
+        //     .catch(error => Promise.reject(error))
+
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+              resolve(test_user);
+            }, 300);
+          }).catch(error => Promise.reject(error))    
+    }
+
+    put(url, data = {}, conf = {}) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+              resolve(test_user);
+            }, 300);
+          }).catch(error => Promise.reject(error)) 
     }
 
     delete(url, conf = {}) {
@@ -57,22 +79,3 @@ class BoundaryJSClient {
 }
 
 export { BoundaryJSClient };
-
-export default {
-    get(url, conf = {}) {
-
-        return getClient().get(url, conf)
-            .then(response => Promise.resolve(response))
-            .catch(error => Promise.reject(error));
-    },
-    post(url, data = {}, conf = {}) {
-        return getClient().post(url, data, conf)
-            .then(response => Promise.resolve(response))
-            .catch(error => Promise.reject(error))
-    },
-    delete(url, conf = {}) {
-        return getClient().delete(url, conf)
-            .then(response => Promise.resolve(response))
-            .catch(error => Promise.reject(error))
-    }
-}
